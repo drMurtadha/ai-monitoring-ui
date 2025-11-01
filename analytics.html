@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>AssetMonitor AI - Health Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+<script>
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary": "#3498DB",
+              "background-light": "#F8F9FA",
+              "background-dark": "#2C3E50",
+              "card-light": "#FFFFFF",
+              "card-dark": "#34495E",
+              "text-light": "#2C3E50",
+              "text-dark": "#ECF0F1",
+              "text-muted-light": "#576c81",
+              "text-muted-dark": "#bdc3c7",
+              "border-light": "#E0E0E0",
+              "border-dark": "#4a6278",
+              "success": "#2ECC71",
+              "warning": "#F1C40F",
+              "danger": "#E74C3C"
+            },
+            fontFamily: {
+              "display": ["Space Grotesk", "sans-serif"]
+            },
+            borderRadius: {"DEFAULT": "0.5rem", "lg": "0.75rem", "xl": "1rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+</head>
+<body class="font-display bg-background-light dark:bg-background-dark text-text-light dark:text-text-dark">
+<div class="relative flex h-auto min-h-screen w-full flex-col">
+<!-- TopNavBar -->
+<header class="sticky top-0 z-50 flex items-center justify-between whitespace-nowrap border-b border-border-light dark:border-border-dark bg-background-light/80 dark:bg-background-dark/80 px-4 sm:px-6 lg:px-8 py-3 backdrop-blur-sm">
+<div class="flex items-center gap-8">
+<div class="flex items-center gap-3 text-text-light dark:text-text-dark">
+<div class="size-6 text-primary">
+<svg fill="none" viewbox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+<path d="M13.8261 17.4264C16.7203 18.1174 20.2244 18.5217 24 18.5217C27.7756 18.5217 31.2797 18.1174 34.1739 17.4264C36.9144 16.7722 39.9967 15.2331 41.3563 14.1648L24.8486 40.6391C24.4571 41.267 23.5429 41.267 23.1514 40.6391L6.64374 14.1648C8.00331 15.2331 11.0856 16.7722 13.8261 17.4264Z" fill="currentColor"></path>
+<path clip-rule="evenodd" d="M39.998 12.236C39.9944 12.2537 39.9875 12.2845 39.9748 12.3294C39.9436 12.4399 39.8949 12.5741 39.8346 12.7175C39.8168 12.7597 39.7989 12.8007 39.7813 12.8398C38.5103 13.7113 35.9788 14.9393 33.7095 15.4811C30.9875 16.131 27.6413 16.5217 24 16.5217C20.3587 16.5217 17.0125 16.131 14.2905 15.4811C12.0012 14.9346 9.44505 13.6897 8.18538 12.8168C8.17384 12.7925 8.16216 12.767 8.15052 12.7408C8.09919 12.6249 8.05721 12.5114 8.02977 12.411C8.00356 12.3152 8.00039 12.2667 8.00004 12.2612C8.00004 12.261 8 12.2607 8.00004 12.2612C8.00004 12.2359 8.0104 11.9233 8.68485 11.3686C9.34546 10.8254 10.4222 10.2469 11.9291 9.72276C14.9242 8.68098 19.1919 8 24 8C28.8081 8 33.0758 8.68098 36.0709 9.72276C37.5778 10.2469 38.6545 10.8254 39.3151 11.3686C39.9006 11.8501 39.9857 12.1489 39.998 12.236ZM4.95178 15.2312L21.4543 41.6973C22.6288 43.5809 25.3712 43.5809 26.5457 41.6973L43.0534 15.223C43.0709 15.1948 43.0878 15.1662 43.104 15.1371L41.3563 14.1648C43.104 15.1371 43.1038 15.1374 43.104 15.1371L43.1051 15.135L43.1065 15.1325L43.1101 15.1261L43.1199 15.1082C43.1276 15.094 43.1377 15.0754 43.1497 15.0527C43.1738 15.0075 43.2062 14.9455 43.244 14.8701C43.319 14.7208 43.4196 14.511 43.5217 14.2683C43.6901 13.8679 44 13.0689 44 12.2609C44 10.5573 43.003 9.22254 41.8558 8.2791C40.6947 7.32427 39.1354 6.55361 37.385 5.94477C33.8654 4.72057 29.133 4 24 4C18.867 4 14.1346 4.72057 10.615 5.94478C8.86463 6.55361 7.30529 7.32428 6.14419 8.27911C4.99695 9.22255 3.99999 10.5573 3.99999 12.2609C3.99999 13.1275 4.29264 13.9078 4.49321 14.3607C4.60375 14.6102 4.71348 14.8196 4.79687 14.9689C4.83898 15.0444 4.87547 15.1065 4.9035 15.1529C4.91754 15.1762 4.92954 15.1957 4.93916 15.2111L4.94662 15.223L4.95178 15.2312ZM35.9868 18.996L24 38.22L12.0131 18.996C12.4661 19.1391 12.9179 19.2658 13.3617 19.3718C16.4281 20.1039 20.0901 20.5217 24 20.5217C27.9099 20.5217 31.5719 20.1039 34.6383 19.3718C35.082 19.2658 35.5339 19.1391 35.9868 18.996Z" fill="currentColor" fill-rule="evenodd"></path>
+</svg>
+</div>
+<h2 class="text-xl font-bold leading-tight tracking-[-0.015em]">AssetMonitor AI</h2>
+</div>
+<nav class="hidden md:flex items-center gap-6">
+<a class="text-sm font-medium leading-normal text-primary" href="#">Dashboard</a>
+<a class="text-sm font-medium leading-normal hover:text-primary transition-colors" href="#">Assets</a>
+<a class="text-sm font-medium leading-normal hover:text-primary transition-colors" href="#">Reports</a>
+<a class="text-sm font-medium leading-normal hover:text-primary transition-colors" href="#">Alerts</a>
+</nav>
+</div>
+<div class="flex flex-1 justify-end items-center gap-4">
+<div class="relative w-full max-w-xs hidden sm:block">
+<div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
+<span class="material-symbols-outlined text-text-muted-light dark:text-text-muted-dark" style="font-size: 20px;">search</span>
+</div>
+<input class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg text-text-light dark:text-text-dark focus:outline-0 focus:ring-2 focus:ring-primary border-border-light dark:border-border-dark bg-card-light/50 dark:bg-card-dark/50 focus:border-primary h-10 placeholder:text-text-muted-light dark:placeholder:text-text-muted-dark pl-10 pr-4 text-sm font-normal leading-normal" placeholder="Search assets..." value=""/>
+</div>
+<div class="flex items-center gap-2">
+<button class="flex h-10 w-10 cursor-pointer items-center justify-center overflow-hidden rounded-lg bg-transparent hover:bg-primary/10 transition-colors">
+<span class="material-symbols-outlined text-text-muted-light dark:text-text-muted-dark">notifications</span>
+</button>
+<button class="flex h-10 w-10 cursor-pointer items-center justify-center overflow-hidden rounded-lg bg-transparent hover:bg-primary/10 transition-colors">
+<span class="material-symbols-outlined text-text-muted-light dark:text-text-muted-dark">settings</span>
+</button>
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10" data-alt="User profile picture" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDEVHjcigaAC1R5yG0zLqU7ILD_U0gMxLZkUUca-3B7Cy2q4uwRuM5strOeWfKjSK8cPJ6kpZf7_H7JbK3yuFr1R1taFUOnnqRYNLw9sYUntRXsFhAhkAROa88y6600RFCts7u2fAwd86DkRoTwhHrjNrTUwYXG6AgeLbMCflxwljC3KoPVGNxcm6M3zw2MwqjzK1ew4Qni_7mpVs725i63Hv9wFv3RDzYx-axNbJUXoTnJI-Moug-Td7AjFc37Min7FiiF59-iNR-B");'></div>
+</div>
+</div>
+</header>
+<!-- Main Content -->
+<main class="flex-1 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+<!-- Page Heading & Toolbar -->
+<div class="mb-8">
+<div class="flex flex-wrap items-center justify-between gap-4 mb-4">
+<div class="flex flex-col gap-1">
+<h1 class="text-3xl md:text-4xl font-bold tracking-tight">Asset Health Dashboard</h1>
+<p class="text-base font-normal text-text-muted-light dark:text-text-muted-dark">Real-time AI-driven monitoring for critical assets.</p>
+</div>
+<div class="flex items-center gap-2">
+<div class="relative w-56">
+<select class="form-select w-full h-10 rounded-lg pl-4 pr-10 bg-card-light dark:bg-card-dark border-border-light dark:border-border-dark focus:ring-2 focus:ring-primary focus:border-primary text-sm">
+<option>St. Mark's Basilica</option>
+<option>Ponte Vecchio Bridge</option>
+<option>National Archives Building</option>
+</select>
+<div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2">
+<span class="material-symbols-outlined text-text-muted-light dark:text-text-muted-dark">unfold_more</span>
+</div>
+</div>
+<button class="flex max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 bg-primary text-white gap-2 text-sm font-bold leading-normal tracking-wide min-w-0 px-4 hover:bg-primary/90 transition-colors">
+<span class="material-symbols-outlined" style="font-size: 20px;">calendar_today</span>
+<span class="truncate">Last 24 Hours</span>
+<span class="material-symbols-outlined" style="font-size: 20px;">expand_more</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Dashboard Grid -->
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+<!-- Column 1: Map and Pipeline -->
+<div class="lg:col-span-2 flex flex-col gap-6">
+<!-- Microclimate Heatmap Card -->
+<div class="bg-card-light dark:bg-card-dark rounded-xl shadow-sm p-6 border border-border-light dark:border-border-dark">
+<h2 class="text-xl font-bold leading-tight tracking-tight mb-4">Real-time Microclimate Analysis</h2>
+<div class="relative">
+<div class="w-full bg-center bg-no-repeat aspect-[16/10] bg-cover rounded-lg object-cover" data-alt="Heatmap of a building floor plan showing temperature variations in shades of blue, green, and red." data-location="St. Mark's Basilica" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCqrUcBqyZp9SrKcmR8c6hbT70Vm9dmvBJgLWPMuUXTshYcMukQ9-4_eYi_ZtWntuaQ4gvtThc3nxw6VvU1xgRfMM-KOnj84gmxJnUtPy7GsdgY5YVehg-Yc5zSS9Eq7UhnGTlfMtHRjyVvB_Z08M_zem3VsNbYxiF77gWIS6r0aLcrV72jqzC6-5GX2WY0rRCQ7I62qbzE0sRGMNoktZEPH9AKhvyhYrzLrr9HoMKjYi8pPUGazAbsJVgehWx_DSHDkQnPMEDIAaeA");'></div>
+<div class="absolute bottom-4 right-4 bg-card-light/80 dark:bg-card-dark/80 backdrop-blur-sm p-3 rounded-lg flex flex-col gap-2 text-xs">
+<div class="flex items-center gap-2"><div class="w-3 h-3 rounded-sm bg-red-500"></div><span>High Humidity (&gt;80%)</span></div>
+<div class="flex items-center gap-2"><div class="w-3 h-3 rounded-sm bg-yellow-400"></div><span>Moderate (60-80%)</span></div>
+<div class="flex items-center gap-2"><div class="w-3 h-3 rounded-sm bg-green-500"></div><span>Optimal (&lt;60%)</span></div>
+</div>
+</div>
+</div>
+<!-- Data Pipeline Timeline Card -->
+<div class="bg-card-light dark:bg-card-dark rounded-xl shadow-sm p-6 border border-border-light dark:border-border-dark">
+<h2 class="text-xl font-bold leading-tight tracking-tight mb-6">Data Processing Pipeline Status</h2>
+<div class="flex items-center justify-between space-x-2">
+<!-- Step 1 -->
+<div class="flex flex-col items-center flex-1">
+<div class="flex items-center justify-center size-10 rounded-full bg-success/20 text-success mb-2">
+<span class="material-symbols-outlined">sensors</span>
+</div>
+<p class="text-sm font-medium text-center">Sensor Data</p>
+<p class="text-xs text-text-muted-light dark:text-text-muted-dark">Acquisition</p>
+</div>
+<div class="flex-1 h-0.5 bg-success"></div>
+<!-- Step 2 -->
+<div class="flex flex-col items-center flex-1">
+<div class="flex items-center justify-center size-10 rounded-full bg-success/20 text-success mb-2">
+<span class="material-symbols-outlined">memory</span>
+</div>
+<p class="text-sm font-medium text-center">Edge</p>
+<p class="text-xs text-text-muted-light dark:text-text-muted-dark">Pre-processing</p>
+</div>
+<div class="flex-1 h-0.5 bg-success"></div>
+<!-- Step 3 -->
+<div class="flex flex-col items-center flex-1">
+<div class="flex items-center justify-center size-10 rounded-full bg-primary/20 text-primary mb-2 animate-pulse">
+<span class="material-symbols-outlined">cloud_upload</span>
+</div>
+<p class="text-sm font-medium text-center">Cloud</p>
+<p class="text-xs text-text-muted-light dark:text-text-muted-dark">Ingestion</p>
+</div>
+<div class="flex-1 h-0.5 bg-gray-300 dark:bg-gray-600"></div>
+<!-- Step 4 -->
+<div class="flex flex-col items-center flex-1 opacity-50">
+<div class="flex items-center justify-center size-10 rounded-full bg-gray-500/20 text-text-muted-light dark:text-text-muted-dark mb-2">
+<span class="material-symbols-outlined">psychology</span>
+</div>
+<p class="text-sm font-medium text-center">AI Analysis</p>
+<p class="text-xs text-text-muted-light dark:text-text-muted-dark">Pending</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Column 2: XAI Score -->
+<div class="lg:col-span-1">
+<div class="bg-card-light dark:bg-card-dark rounded-xl shadow-sm p-6 border border-border-light dark:border-border-dark h-full">
+<h2 class="text-xl font-bold leading-tight tracking-tight mb-4">Structural Integrity Score</h2>
+<div class="flex flex-col items-center justify-center my-8">
+<div class="relative size-40">
+<svg class="size-full" height="36" viewbox="0 0 36 36" width="36" xmlns="http://www.w3.org/2000/svg">
+<circle class="stroke-current text-gray-200 dark:text-gray-700" cx="18" cy="18" fill="none" r="16" stroke-width="3"></circle>
+<circle class="stroke-current text-success" cx="18" cy="18" fill="none" r="16" stroke-dasharray="88" stroke-dashoffset="13" stroke-linecap="round" stroke-width="3" transform="rotate(-90 18 18)"></circle>
+</svg>
+<div class="absolute inset-0 flex flex-col items-center justify-center">
+<span class="text-5xl font-bold text-success">85</span>
+<span class="text-sm text-text-muted-light dark:text-text-muted-dark">out of 100</span>
+</div>
+</div>
+<div class="mt-4 px-4 py-1.5 bg-success/10 rounded-full text-sm font-medium text-success">
+                                Low Risk
+                            </div>
+</div>
+<h3 class="font-bold mb-3">Key Influencing Factors</h3>
+<div class="space-y-3 text-sm">
+<div class="flex items-center justify-between p-3 rounded-lg bg-success/10">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-success">check_circle</span>
+<span>Stable Temperature</span>
+</div>
+<span class="font-semibold text-success">+ 5.2</span>
+</div>
+<div class="flex items-center justify-between p-3 rounded-lg bg-success/10">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-success">check_circle</span>
+<span>Low Vibration Levels</span>
+</div>
+<span class="font-semibold text-success">+ 3.8</span>
+</div>
+<div class="flex items-center justify-between p-3 rounded-lg bg-danger/10">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-danger">cancel</span>
+<span>High Humidity (&gt;85%)</span>
+</div>
+<span class="font-semibold text-danger">- 10.1</span>
+</div>
+<div class="flex items-center justify-between p-3 rounded-lg bg-warning/10">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-warning">warning</span>
+<span>Minor Salt Efflorescence</span>
+</div>
+<span class="font-semibold text-warning">- 3.9</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+</body></html>
