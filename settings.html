@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>AI System Configuration</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+<script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#135bec",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#101622",
+                    },
+                    fontFamily: {
+                        "display": ["Space Grotesk", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display">
+<div class="relative flex min-h-screen w-full flex-col">
+<div class="flex h-full grow flex-row">
+<!-- SideNavBar -->
+<aside class="flex w-64 flex-col border-r border-slate-200/10 bg-white/5 dark:bg-black/10 p-4">
+<div class="flex flex-col gap-4">
+<div class="flex items-center gap-3">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10" data-alt="User avatar of Jane Doe" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuB5EuY1UjBFalTf4b3iPiKNnR2Ts3V8KtG28-YjaTna1aPl7w1NOcHogg7LRvLFTT-4v9DDcLYgAyXCltR4mjWwGJuWl877NC9vBMiXKj2sTlij_nMWCmmUnXSIVL7M10JmPRkgdvYfzXeS3HLrtPqScJ7BL2A1WhJrXvZa0Yej2Lik_wp89hhs94d2F5fkCnJtixsuSOnywHcKktCi-DIYCM8INkf_8pzfcieDDU-e2-QvmWLNzMIfp6Sqc7MdwJtaQg34mjbegaSn");'></div>
+<div class="flex flex-col">
+<h1 class="text-slate-900 dark:text-white text-base font-medium leading-normal">Jane Doe</h1>
+<p class="text-slate-500 dark:text-slate-400 text-sm font-normal leading-normal">System Administrator</p>
+</div>
+</div>
+<nav class="flex flex-col gap-2 mt-4">
+<a class="flex items-center gap-3 px-3 py-2 text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-800 rounded-lg" href="#">
+<span class="material-symbols-outlined text-slate-600 dark:text-slate-400">dashboard</span>
+<p class="text-sm font-medium leading-normal">Dashboard</p>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-800 rounded-lg" href="#">
+<span class="material-symbols-outlined text-slate-600 dark:text-slate-400">monitoring</span>
+<p class="text-sm font-medium leading-normal">Analytics</p>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-800 rounded-lg" href="#">
+<span class="material-symbols-outlined text-slate-600 dark:text-slate-400">description</span>
+<p class="text-sm font-medium leading-normal">Reports</p>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg bg-primary/10 text-primary dark:bg-primary/20 dark:text-white" href="#">
+<span class="material-symbols-outlined">settings</span>
+<p class="text-sm font-medium leading-normal">Settings</p>
+</a>
+</nav>
+</div>
+<div class="mt-auto flex flex-col gap-1">
+<a class="flex items-center gap-3 px-3 py-2 text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-800 rounded-lg" href="#">
+<span class="material-symbols-outlined text-slate-600 dark:text-slate-400">support_agent</span>
+<p class="text-sm font-medium leading-normal">Support</p>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-800 rounded-lg" href="#">
+<span class="material-symbols-outlined text-slate-600 dark:text-slate-400">logout</span>
+<p class="text-sm font-medium leading-normal">Log out</p>
+</a>
+</div>
+</aside>
+<!-- Main Content -->
+<main class="flex-1 p-6 lg:p-10">
+<div class="mx-auto max-w-4xl">
+<!-- Page Heading -->
+<div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-8">
+<div class="flex flex-col gap-2">
+<h1 class="text-slate-900 dark:text-white text-4xl font-black leading-tight tracking-[-0.033em]">System Configuration</h1>
+<p class="text-slate-500 dark:text-slate-400 text-base font-normal leading-normal">Manage AI-system settings, schedules, and design guidelines.</p>
+</div>
+<button class="px-5 py-2.5 bg-primary text-white text-sm font-medium rounded-lg shadow-sm hover:bg-primary/90 focus:outline-none focus:ring-2 focus:ring-primary/50 disabled:opacity-50 disabled:cursor-not-allowed" disabled="">Save Changes</button>
+</div>
+<!-- Global Settings -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+<!-- ActionPanel: Theme -->
+<div class="flex flex-1 flex-col items-start justify-between gap-4 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900/50 p-5 sm:flex-row sm:items-center">
+<div class="flex flex-col gap-1">
+<p class="text-slate-900 dark:text-white text-base font-bold leading-tight">Theme</p>
+<p class="text-slate-500 dark:text-slate-400 text-sm font-normal leading-normal">Switch between light and dark mode.</p>
+</div>
+<label class="relative flex h-[31px] w-[51px] cursor-pointer items-center rounded-full border-none bg-slate-200 dark:bg-slate-700 p-0.5 has-[:checked]:justify-end has-[:checked]:bg-primary">
+<div class="h-full w-[27px] rounded-full bg-white" style="box-shadow: rgba(0, 0, 0, 0.15) 0px 3px 8px, rgba(0, 0, 0, 0.06) 0px 3px 1px;"></div>
+<input checked="" class="invisible absolute" type="checkbox"/>
+</label>
+</div>
+<!-- ActionPanel: Notifications -->
+<div class="flex flex-1 flex-col items-start justify-between gap-4 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900/50 p-5 sm:flex-row sm:items-center">
+<div class="flex flex-col gap-1">
+<p class="text-slate-900 dark:text-white text-base font-bold leading-tight">Notifications</p>
+<p class="text-slate-500 dark:text-slate-400 text-sm font-normal leading-normal">Enable or disable all system notifications.</p>
+</div>
+<label class="relative flex h-[31px] w-[51px] cursor-pointer items-center rounded-full border-none bg-slate-200 dark:bg-slate-700 p-0.5 has-[:checked]:justify-end has-[:checked]:bg-primary">
+<div class="h-full w-[27px] rounded-full bg-white" style="box-shadow: rgba(0, 0, 0, 0.15) 0px 3px 8px, rgba(0, 0, 0, 0.06) 0px 3px 1px;"></div>
+<input class="invisible absolute" type="checkbox"/>
+</label>
+</div>
+</div>
+<!-- Card-based Settings Sections -->
+<div class="flex flex-col gap-8">
+<!-- Fault Tolerance Card -->
+<div class="flex flex-col gap-6 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900/50 p-6">
+<div class="flex flex-col">
+<h2 class="text-slate-900 dark:text-white text-lg font-bold leading-tight">Fault Tolerance</h2>
+<p class="text-slate-500 dark:text-slate-400 text-sm font-normal">Configure system redundancy and data replication strategies.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div class="flex flex-col gap-2">
+<label class="text-sm font-medium text-slate-700 dark:text-slate-300" for="failover-mode">Failover Mode</label>
+<select class="w-full rounded-md border-slate-300 bg-slate-100 dark:border-slate-700 dark:bg-slate-800 dark:text-white focus:border-primary focus:ring-primary" id="failover-mode">
+<option>Active-Passive</option>
+<option>Active-Active</option>
+<option>N+1 Redundancy</option>
+</select>
+</div>
+<div class="flex flex-col gap-2">
+<label class="text-sm font-medium text-slate-700 dark:text-slate-300" for="replication-freq">Data Replication</label>
+<select class="w-full rounded-md border-slate-300 bg-slate-100 dark:border-slate-700 dark:bg-slate-800 dark:text-white focus:border-primary focus:ring-primary" id="replication-freq">
+<option>Real-time</option>
+<option>Every 15 minutes</option>
+<option>Hourly</option>
+<option>Daily</option>
+</select>
+</div>
+</div>
+</div>
+<!-- AI Model Retraining Card -->
+<div class="flex flex-col gap-6 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900/50 p-6">
+<div class="flex flex-col">
+<h2 class="text-slate-900 dark:text-white text-lg font-bold leading-tight">AI Model Retraining</h2>
+<p class="text-slate-500 dark:text-slate-400 text-sm font-normal">Set up automated schedules to keep your models up-to-date.</p>
+</div>
+<div class="flex items-center justify-between">
+<p class="text-sm font-medium text-slate-700 dark:text-slate-300">Enable Automated Retraining</p>
+<label class="relative flex h-[31px] w-[51px] cursor-pointer items-center rounded-full border-none bg-slate-200 dark:bg-slate-700 p-0.5 has-[:checked]:justify-end has-[:checked]:bg-primary">
+<div class="h-full w-[27px] rounded-full bg-white" style="box-shadow: rgba(0, 0, 0, 0.15) 0px 3px 8px, rgba(0, 0, 0, 0.06) 0px 3px 1px;"></div>
+<input checked="" class="invisible absolute" type="checkbox"/>
+</label>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+<div class="flex flex-col gap-2">
+<label class="text-sm font-medium text-slate-700 dark:text-slate-300" for="retrain-freq">Frequency</label>
+<select class="w-full rounded-md border-slate-300 bg-slate-100 dark:border-slate-700 dark:bg-slate-800 dark:text-white focus:border-primary focus:ring-primary" id="retrain-freq">
+<option>Daily</option>
+<option selected="">Weekly</option>
+<option>Monthly</option>
+</select>
+</div>
+<div class="flex flex-col gap-2">
+<label class="text-sm font-medium text-slate-700 dark:text-slate-300" for="retrain-day">Day of Week</label>
+<select class="w-full rounded-md border-slate-300 bg-slate-100 dark:border-slate-700 dark:bg-slate-800 dark:text-white focus:border-primary focus:ring-primary" id="retrain-day">
+<option>Monday</option>
+<option>Tuesday</option>
+<option>Wednesday</option>
+<option>Thursday</option>
+<option>Friday</option>
+<option selected="">Saturday</option>
+<option>Sunday</option>
+</select>
+</div>
+<div class="flex flex-col gap-2">
+<label class="text-sm font-medium text-slate-700 dark:text-slate-300" for="lookback-period">Lookback Period (Days)</label>
+<input class="w-full rounded-md border-slate-300 bg-slate-100 dark:border-slate-700 dark:bg-slate-800 dark:text-white focus:border-primary focus:ring-primary" id="lookback-period" type="number" value="30"/>
+</div>
+</div>
+</div>
+<!-- System Guidelines Card -->
+<div class="flex flex-col gap-6 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900/50 p-6">
+<div class="flex flex-col">
+<h2 class="text-slate-900 dark:text-white text-lg font-bold leading-tight">System Guidelines</h2>
+<p class="text-slate-500 dark:text-slate-400 text-sm font-normal">Access documentation and configure system verification modes.</p>
+</div>
+<div class="flex flex-col gap-4">
+<div class="flex items-center justify-between rounded-lg border border-slate-200 dark:border-slate-800 p-4">
+<div>
+<p class="font-medium text-slate-800 dark:text-slate-200">Design Guidelines</p>
+<p class="text-sm text-slate-500 dark:text-slate-400">Best practices for building verifiable systems.</p>
+</div>
+<a class="inline-flex items-center gap-2 text-primary hover:underline text-sm font-medium" href="#">
+                                        Read Docs <span class="material-symbols-outlined text-base">arrow_forward</span>
+</a>
+</div>
+<div class="flex items-center justify-between rounded-lg border border-slate-200 dark:border-slate-800 p-4">
+<div>
+<p class="font-medium text-slate-800 dark:text-slate-200">Maintainability Best Practices</p>
+<p class="text-sm text-slate-500 dark:text-slate-400">Guidelines for long-term system health.</p>
+</div>
+<a class="inline-flex items-center gap-2 text-primary hover:underline text-sm font-medium" href="#">
+                                        Read Docs <span class="material-symbols-outlined text-base">arrow_forward</span>
+</a>
+</div>
+</div>
+<div class="border-t border-slate-200 dark:border-slate-800 pt-6">
+<div class="flex items-center justify-between">
+<div>
+<p class="text-sm font-medium text-slate-700 dark:text-slate-300">Enable Strict Verification Mode</p>
+<p class="text-xs text-slate-500 dark:text-slate-400">Enforces stricter validation rules across the system.</p>
+</div>
+<label class="relative flex h-[31px] w-[51px] cursor-pointer items-center rounded-full border-none bg-slate-200 dark:bg-slate-700 p-0.5 has-[:checked]:justify-end has-[:checked]:bg-primary">
+<div class="h-full w-[27px] rounded-full bg-white" style="box-shadow: rgba(0, 0, 0, 0.15) 0px 3px 8px, rgba(0, 0, 0, 0.06) 0px 3px 1px;"></div>
+<input class="invisible absolute" type="checkbox"/>
+</label>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+</div>
+</body></html>
