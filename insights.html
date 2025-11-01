@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>AI Monitoring Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary": "#135bec",
+              "background-light": "#f6f6f8",
+              "background-dark": "#101622",
+            },
+            fontFamily: {
+              "display": ["Space Grotesk", "sans-serif"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+</head>
+<body class="font-display bg-background-light dark:bg-background-dark text-gray-800 dark:text-gray-200">
+<div class="flex min-h-screen">
+<!-- SideNavBar -->
+<aside class="w-64 flex-shrink-0 bg-white dark:bg-[#151c2c] p-4 flex flex-col justify-between">
+<div class="flex flex-col gap-4">
+<div class="flex items-center gap-3 p-2">
+<div class="bg-primary text-white rounded-lg p-2 flex items-center justify-center">
+<span class="material-symbols-outlined text-2xl">
+                            query_stats
+                        </span>
+</div>
+<div class="flex flex-col">
+<h1 class="text-gray-900 dark:text-white text-base font-bold leading-normal">AI Monitoring</h1>
+<p class="text-gray-500 dark:text-gray-400 text-sm font-normal leading-normal">Infrastructure &amp; Heritage</p>
+</div>
+</div>
+<nav class="flex flex-col gap-2 mt-4">
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg bg-primary/10 text-primary" href="#">
+<span class="material-symbols-outlined text-2xl">dashboard</span>
+<p class="text-sm font-medium leading-normal">Dashboard</p>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-primary/10 hover:text-primary rounded-lg transition-colors" href="#">
+<span class="material-symbols-outlined text-2xl">notifications</span>
+<p class="text-sm font-medium leading-normal">Alerts</p>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-primary/10 hover:text-primary rounded-lg transition-colors" href="#">
+<span class="material-symbols-outlined text-2xl">bar_chart</span>
+<p class="text-sm font-medium leading-normal">Reports</p>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-primary/10 hover:text-primary rounded-lg transition-colors" href="#">
+<span class="material-symbols-outlined text-2xl">apartment</span>
+<p class="text-sm font-medium leading-normal">Assets</p>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-primary/10 hover:text-primary rounded-lg transition-colors" href="#">
+<span class="material-symbols-outlined text-2xl">menu_book</span>
+<p class="text-sm font-medium leading-normal">Case Studies</p>
+</a>
+</nav>
+</div>
+<div class="flex flex-col gap-2">
+<a class="flex items-center gap-3 px-3 py-2 text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-primary/10 hover:text-primary rounded-lg transition-colors" href="#">
+<span class="material-symbols-outlined text-2xl">settings</span>
+<p class="text-sm font-medium leading-normal">Settings</p>
+</a>
+</div>
+</aside>
+<!-- Main Content -->
+<main class="flex-1 flex flex-col">
+<!-- TopNavBar -->
+<header class="flex items-center justify-between whitespace-nowrap border-b border-gray-200 dark:border-gray-700/50 px-8 py-3 bg-white/50 dark:bg-[#151c2c]/50 backdrop-blur-sm sticky top-0 z-10">
+<div class="flex items-center gap-8">
+<label class="flex flex-col w-96 h-10">
+<div class="flex w-full flex-1 items-stretch rounded-lg h-full">
+<div class="text-gray-400 flex bg-gray-100 dark:bg-background-dark items-center justify-center pl-4 rounded-l-lg border border-gray-200 dark:border-gray-700 border-r-0">
+<span class="material-symbols-outlined text-xl">search</span>
+</div>
+<input class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg text-gray-800 dark:text-gray-200 focus:outline-0 focus:ring-2 focus:ring-primary border-gray-200 dark:border-gray-700 bg-gray-100 dark:bg-background-dark h-full placeholder:text-gray-400 px-4 rounded-l-none border-l-0 pl-2 text-sm font-normal leading-normal" placeholder="Search assets, alerts..." value=""/>
+</div>
+</label>
+</div>
+<div class="flex items-center gap-4">
+<button class="flex cursor-pointer items-center justify-center rounded-lg h-10 w-10 bg-gray-100 dark:bg-background-dark text-gray-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700/50 transition-colors">
+<span class="material-symbols-outlined text-2xl">notifications</span>
+</button>
+<div class="flex items-center gap-3">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10" data-alt="User profile picture of a person" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBFhvfS2GnpxRlsxYtNFgUu4fcC_5U84JHK9jC437YC-Y9C_jOm0SkTyypkwpSemp3v1NnuPvO24SL9HjFWDBQZZ0ILqlPfpdC10CzgG_GwZAsVetdMeMzKk5KXBpcUfZc0bYP3s1Kgh-tRL7SUMWB5Z5M6raahSQYbvjw61dWgBoBQy_RPkgGoZHu7Xf7-x2PF9pOpKn5Fd3rd4hAkZQyxKubQIGCz1HnH6vfG50eCiavgjL5X4ZzIqfTydt_j2ur_Qq9x5j4VgzJ_");'></div>
+<div class="flex flex-col">
+<p class="text-sm font-medium text-gray-900 dark:text-white">Alex Johnson</p>
+<p class="text-xs text-gray-500 dark:text-gray-400">System Engineer</p>
+</div>
+</div>
+</div>
+</header>
+<div class="flex-1 p-8 overflow-y-auto">
+<!-- PageHeading -->
+<div class="flex flex-wrap justify-between gap-3 items-center">
+<h1 class="text-gray-900 dark:text-white text-3xl font-bold leading-tight tracking-tight">Infrastructure &amp; Heritage Monitoring Dashboard</h1>
+</div>
+<!-- Stats -->
+<div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6 mt-6">
+<div class="flex flex-col gap-2 rounded-xl p-6 bg-white dark:bg-[#151c2c] border border-gray-200 dark:border-gray-700/50">
+<p class="text-gray-600 dark:text-gray-300 text-base font-medium leading-normal">Reliability Score</p>
+<p class="text-gray-900 dark:text-white tracking-tight text-3xl font-bold leading-tight">99.8%</p>
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-green-500 text-lg">trending_up</span>
+<p class="text-green-500 text-sm font-medium leading-normal">+1.2% vs last month</p>
+</div>
+</div>
+<div class="flex flex-col gap-2 rounded-xl p-6 bg-white dark:bg-[#151c2c] border border-gray-200 dark:border-gray-700/50">
+<p class="text-gray-600 dark:text-gray-300 text-base font-medium leading-normal">Sustainability Impact</p>
+<p class="text-gray-900 dark:text-white tracking-tight text-3xl font-bold leading-tight">High</p>
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-red-500 text-lg">trending_down</span>
+<p class="text-red-500 text-sm font-medium leading-normal">-0.5% vs last month</p>
+</div>
+</div>
+<div class="flex flex-col gap-2 rounded-xl p-6 bg-white dark:bg-[#151c2c] border border-gray-200 dark:border-gray-700/50">
+<p class="text-gray-600 dark:text-gray-300 text-base font-medium leading-normal">Computational Confidence</p>
+<p class="text-gray-900 dark:text-white tracking-tight text-3xl font-bold leading-tight">98.2%</p>
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-green-500 text-lg">trending_up</span>
+<p class="text-green-500 text-sm font-medium leading-normal">+0.7% vs last month</p>
+</div>
+</div>
+<div class="flex flex-col gap-2 rounded-xl p-6 bg-white dark:bg-[#151c2c] border border-gray-200 dark:border-gray-700/50">
+<p class="text-gray-600 dark:text-gray-300 text-base font-medium leading-normal">Active Critical Alerts</p>
+<p class="text-gray-900 dark:text-white tracking-tight text-3xl font-bold leading-tight">3</p>
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-yellow-500 text-lg">trending_flat</span>
+<p class="text-yellow-500 text-sm font-medium leading-normal">Unchanged</p>
+</div>
+</div>
+</div>
+<!-- Actionable Insights -->
+<section class="mt-8">
+<h2 class="text-gray-900 dark:text-white text-xl font-bold leading-tight tracking-tight">Actionable Insights</h2>
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mt-4">
+<div class="lg:col-span-2 bg-white dark:bg-[#151c2c] border border-gray-200 dark:border-gray-700/50 rounded-xl p-6">
+<div class="flex justify-between items-center">
+<h3 class="text-lg font-semibold text-gray-900 dark:text-white">Prioritized Alerts</h3>
+<button class="text-sm font-medium text-primary hover:underline">View All</button>
+</div>
+<div class="mt-4 flow-root">
+<div class="-mx-6 -my-2 overflow-x-auto">
+<div class="inline-block min-w-full py-2 align-middle sm:px-6">
+<table class="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
+<thead>
+<tr>
+<th class="py-3.5 pl-6 pr-3 text-left text-sm font-semibold text-gray-900 dark:text-white" scope="col">Alert</th>
+<th class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900 dark:text-white" scope="col">Priority</th>
+<th class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900 dark:text-white" scope="col">Asset</th>
+<th class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900 dark:text-white" scope="col">Timestamp</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-gray-200 dark:divide-gray-700/50">
+<tr>
+<td class="whitespace-nowrap py-4 pl-6 pr-3 text-sm font-medium text-gray-900 dark:text-white">Structural Stress Anomaly</td>
+<td class="whitespace-nowrap px-3 py-4 text-sm">
+<span class="inline-flex items-center rounded-md bg-red-100 dark:bg-red-900/40 px-2 py-1 text-xs font-medium text-red-700 dark:text-red-400">Critical</span>
+</td>
+<td class="whitespace-nowrap px-3 py-4 text-sm text-gray-600 dark:text-gray-300">Old Bridge, Sector 4</td>
+<td class="whitespace-nowrap px-3 py-4 text-sm text-gray-600 dark:text-gray-300">2 min ago</td>
+</tr>
+<tr>
+<td class="whitespace-nowrap py-4 pl-6 pr-3 text-sm font-medium text-gray-900 dark:text-white">High Humidity Detected</td>
+<td class="whitespace-nowrap px-3 py-4 text-sm">
+<span class="inline-flex items-center rounded-md bg-yellow-100 dark:bg-yellow-900/40 px-2 py-1 text-xs font-medium text-yellow-800 dark:text-yellow-400">High</span>
+</td>
+<td class="whitespace-nowrap px-3 py-4 text-sm text-gray-600 dark:text-gray-300">Heritage Museum Archive</td>
+<td class="whitespace-nowrap px-3 py-4 text-sm text-gray-600 dark:text-gray-300">1 hour ago</td>
+</tr>
+<tr>
+<td class="whitespace-nowrap py-4 pl-6 pr-3 text-sm font-medium text-gray-900 dark:text-white">HVAC Energy Spike</td>
+<td class="whitespace-nowrap px-3 py-4 text-sm">
+<span class="inline-flex items-center rounded-md bg-blue-100 dark:bg-blue-900/40 px-2 py-1 text-xs font-medium text-blue-700 dark:text-blue-400">Medium</span>
+</td>
+<td class="whitespace-nowrap px-3 py-4 text-sm text-gray-600 dark:text-gray-300">Central Tower, Floor 12</td>
+<td class="whitespace-nowrap px-3 py-4 text-sm text-gray-600 dark:text-gray-300">4 hours ago</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+<div class="bg-white dark:bg-[#151c2c] border border-gray-200 dark:border-gray-700/50 rounded-xl p-6 flex flex-col">
+<h3 class="text-lg font-semibold text-gray-900 dark:text-white">Decision Recommendations</h3>
+<div class="flex-1 flex flex-col gap-4 mt-4">
+<div class="bg-gray-50 dark:bg-background-dark/50 rounded-lg p-4 flex-1 flex flex-col justify-between">
+<div>
+<h4 class="font-semibold text-gray-900 dark:text-white">Preventative Maintenance Advisory</h4>
+<p class="text-sm text-gray-600 dark:text-gray-300 mt-1">Schedule inspection for 'Old Bridge' support columns within 48 hours.</p>
+</div>
+<p class="text-xs font-medium text-green-600 dark:text-green-400 mt-2">Impact: High Reliability Gain</p>
+</div>
+<div class="bg-gray-50 dark:bg-background-dark/50 rounded-lg p-4 flex-1 flex flex-col justify-between">
+<div>
+<h4 class="font-semibold text-gray-900 dark:text-white">Energy Optimization Suggestion</h4>
+<p class="text-sm text-gray-600 dark:text-gray-300 mt-1">Adjust HVAC schedule in 'Central Tower' based on predicted occupancy.
+                                        </p>
+</div>
+<p class="text-xs font-medium text-green-600 dark:text-green-400 mt-2">Potential Savings: ~15%</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Case Studies -->
+<section class="mt-8">
+<h2 class="text-gray-900 dark:text-white text-xl font-bold leading-tight tracking-tight">Case Studies</h2>
+<div class="mt-4 space-y-4">
+<details class="group bg-white dark:bg-[#151c2c] border border-gray-200 dark:border-gray-700/50 rounded-xl overflow-hidden">
+<summary class="flex cursor-pointer items-center justify-between p-6">
+<h3 class="font-semibold text-gray-900 dark:text-white">Structural Monitoring of the Old Bridge</h3>
+<span class="material-symbols-outlined transition-transform group-open:rotate-180">expand_more</span>
+</summary>
+<div class="px-6 pb-6 text-gray-600 dark:text-gray-300 text-sm leading-relaxed">
+<p class="border-t border-gray-200 dark:border-gray-700/50 pt-4">This case study details the deployment of fiber-optic sensors and AI-driven anomaly detection to monitor the structural integrity of a 150-year-old historic bridge. The system successfully identified micro-fractures caused by increased traffic load, allowing for timely reinforcement and preventing catastrophic failure. Key results include a 40% reduction in manual inspection costs and a 99.9% computational confidence in predictive stress models.</p>
+</div>
+</details>
+<details class="group bg-white dark:bg-[#151c2c] border border-gray-200 dark:border-gray-700/50 rounded-xl overflow-hidden">
+<summary class="flex cursor-pointer items-center justify-between p-6">
+<h3 class="font-semibold text-gray-900 dark:text-white">Predictive Maintenance on Metro Line 3 Viaduct</h3>
+<span class="material-symbols-outlined transition-transform group-open:rotate-180">expand_more</span>
+</summary>
+<div class="px-6 pb-6 text-gray-600 dark:text-gray-300 text-sm leading-relaxed">
+<p class="border-t border-gray-200 dark:border-gray-700/50 pt-4">Utilizing vibration and acoustic sensors, our AI model analyzed the health of the Metro Line 3 viaduct. The system predicted a bearing failure with 3 weeks of lead time, enabling a planned maintenance window that avoided service disruption. This proactive approach improved system reliability and saved an estimated $1.2M in potential emergency repair costs and associated economic impact.</p>
+</div>
+</details>
+<details class="group bg-white dark:bg-[#151c2c] border border-gray-200 dark:border-gray-700/50 rounded-xl overflow-hidden">
+<summary class="flex cursor-pointer items-center justify-between p-6">
+<h3 class="font-semibold text-gray-900 dark:text-white">Climate Control for the National Archives</h3>
+<span class="material-symbols-outlined transition-transform group-open:rotate-180">expand_more</span>
+</summary>
+<div class="px-6 pb-6 text-gray-600 dark:text-gray-300 text-sm leading-relaxed">
+<p class="border-t border-gray-200 dark:border-gray-700/50 pt-4">This project involved implementing an intelligent climate control system for the National Archives building. By analyzing environmental data and building occupancy patterns, the AI optimizes HVAC operations to maintain strict temperature and humidity levels for artifact preservation while reducing energy consumption by 22%, significantly improving the facility's sustainability index.</p>
+</div>
+</details>
+</div>
+</section>
+</div>
+</main>
+</div>
+</body></html>
